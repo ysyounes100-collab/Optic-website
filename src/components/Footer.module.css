@@ -1,0 +1,148 @@
+.footer {
+  background: #1a1a1a;
+  color: #e5e5e5;
+  padding: 3rem 0 1.5rem;
+}
+
+.top {
+  display: grid;
+  gap: 2rem;
+  padding-bottom: 2rem;
+  border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+}
+
+@media (min-width: 768px) {
+  .top {
+    grid-template-columns: 1fr 1fr 1fr;
+  }
+}
+
+.brand {
+  display: flex;
+  flex-direction: column;
+  gap: 0.25rem;
+}
+
+.name {
+  font-family: var(--font-display);
+  font-size: 1.35rem;
+  font-weight: 600;
+  color: white;
+}
+
+.tagline {
+  font-size: 0.9rem;
+  color: #a3a3a3;
+}
+
+.slogan {
+  font-size: 0.9rem;
+  color: #a3a3a3;
+  margin-top: 0.5rem;
+}
+
+.links a {
+  color: #e5e5e5;
+}
+
+.links a:hover {
+  color: white;
+}
+
+.address {
+  font-size: 0.9rem;
+  color: #a3a3a3;
+  margin: 0.5rem 0 1rem;
+  line-height: 1.5;
+}
+
+.social {
+  display: flex;
+  gap: 1rem;
+}
+
+.social a {
+  font-size: 0.9rem;
+  color: #a3a3a3;
+}
+
+.social a:hover {
+  color: white;
+}
+
+.newsletterTitle {
+  font-size: 1rem;
+  font-weight: 600;
+  margin-bottom: 0.75rem;
+  color: white;
+}
+
+.newsletterForm {
+  display: flex;
+  gap: 0.5rem;
+  flex-wrap: wrap;
+}
+
+.newsletterInput {
+  flex: 1;
+  min-width: 180px;
+  padding: 0.6rem 0.9rem;
+  border: 1px solid rgba(255, 255, 255, 0.2);
+  border-radius: 8px;
+  background: rgba(255, 255, 255, 0.05);
+  color: white;
+  font-family: inherit;
+  font-size: 0.95rem;
+}
+
+.newsletterInput::placeholder {
+  color: #a3a3a3;
+}
+
+.newsletterInput:focus {
+  outline: none;
+  border-color: var(--color-accent);
+}
+
+.newsletterBtn {
+  padding: 0.6rem 1rem;
+  background: var(--color-accent);
+  color: white;
+  font-weight: 600;
+  font-size: 0.9rem;
+  border-radius: 8px;
+  transition: background 0.2s;
+}
+
+.newsletterBtn:hover {
+  background: var(--color-accent-light);
+}
+
+.newsletterSuccess {
+  color: var(--color-green-soft);
+  font-size: 0.95rem;
+}
+
+.bottom {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-between;
+  align-items: center;
+  gap: 1rem;
+  margin-top: 1.5rem;
+}
+
+.legal {
+  font-size: 0.85rem;
+  color: #737373;
+  margin: 0;
+}
+
+.legalLink {
+  font-size: 0.85rem;
+  color: #a3a3a3;
+}
+
+.legalLink:hover {
+  color: white;
+}

@@ -1,0 +1,43 @@
+.section {
+  padding: 4rem 0;
+  background: white;
+}
+
+.heading {
+  font-family: var(--font-display);
+  font-size: clamp(1.5rem, 3vw, 2rem);
+  font-weight: 600;
+  text-align: center;
+  margin-bottom: 2rem;
+  color: var(--color-text);
+}
+
+.list {
+  list-style: none;
+  max-width: 640px;
+  margin: 0 auto;
+  display: grid;
+  gap: 1rem;
+}
+
+.item {
+  display: flex;
+  align-items: center;
+  gap: 1rem;
+  padding: 1rem 1.25rem;
+  background: var(--color-gray-light);
+  border-radius: var(--radius);
+  font-weight: 500;
+  color: var(--color-text);
+  transition: background 0.2s, transform 0.2s;
+}
+
+.item:hover {
+  background: var(--color-accent-soft);
+  transform: translateX(4px);
+}
+
+.check {
+  font-size: 1.25rem;
+  flex-shrink: 0;
+}
