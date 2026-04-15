@@ -1,3 +1,5 @@
+const MAP_CENTER = { lat: 30.3995673, lng: -9.5489854 } as const;
+
 export const SITE = {
   name: 'Ezza Optique',
   tagline: 'Opticien à Agadir',
@@ -7,9 +9,11 @@ export const SITE = {
   phone: '05 28 29 27 03',
   phoneRaw: '0528292703',
   googleMapsCode: '9FX2+RC Agadir',
-  googleMapsUrl: 'https://www.google.com/maps/place/Ezza+Optique/@30.3995939,-9.549166,20.34z/data=!4m6!3m5!1s0xdb3b74302017f6b:0x8a8d796371484847!8m2!3d30.3995673!4d-9.5489854!16s%2Fg%2F11ks0d6b80?entry=ttu',
-  /** Coordonnées pour l’embed carte (lat, lng) */
-  mapCenter: { lat: 30.3995673, lng: -9.5489854 },
+  /** Fiche Google Maps (lieu du magasin) */
+  googleMapsUrl:
+    'https://www.google.com/maps/place/Ezza+Optique/@30.9928403,-12.5084617,4.42z/data=!4m6!3m5!1s0xdb3b74302017f6b:0x8a8d796371484847!8m2!3d30.3995673!4d-9.5489854!16s%2Fg%2F11ks0d6b80?entry=ttu',
+  /** Coordonnées (lat, lng) — carte embarquée + marqueur */
+  mapCenter: MAP_CENTER,
   openingHours: 'Fermé — Ouvre à 9h Lundi',
   whatsapp: '212528292703',
 } as const;
@@ -44,7 +48,7 @@ export const CATEGORIES = [
     title: 'Lentilles & Vision Care',
     description: 'Lentilles de contact et solutions d\'entretien.',
     cta: 'Voir la collection',
-    image: 'https://www.opticalh.com/img/cms/landings/error%20404/Gafas%20de%20sol%20.jpg',
+    image: 'https://m.media-amazon.com/images/I/61+RKvgkDYL._AC_SX679_.jpg',
   },
   {
     id: 'accessoires',

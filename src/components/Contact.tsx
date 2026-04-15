@@ -1,11 +1,51 @@
-import { useState } from 'react';
+import { useEffect, useRef, useState } from 'react';
 import type { FormEvent } from 'react';
+import L from 'leaflet';
+import 'leaflet/dist/leaflet.css';
 import { SITE } from '../data/site';
 import styles from './Contact.module.css';
 
 export function Contact() {
   const [sent, setSent] = useState(false);
   const [form, setForm] = useState({ name: '', email: '', message: '' });
+  const mapElRef = useRef<HTMLDivElement>(null);
+
+  useEffect(() => {
+    const el = mapElRef.current;
+    if (!el) return;
+
+    const { lat, lng } = SITE.mapCenter;
+
+    const map = L.map(el, {
+      center: [lat, lng],
+      zoom: 17,
+      minZoom: 0,
+      maxZoom: 19,
+    });
+
+    L.tileLayer('https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png', {
+      attribution: '&copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a>',
+    }).addTo(map);
+
+    const pinSvg =
+      '<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 36" width="28" height="42" aria-hidden="true"><path fill="#c62828" d="M12 0C7.8 0 4 3.3 4 8c0 5.2 8 16 8 16s8-10.8 8-16c0-4.7-3.8-8-8-8z"/><circle fill="#fff" cx="12" cy="8" r="3"/></svg>';
+
+    L.marker([lat, lng], {
+      icon: L.divIcon({
+        className: styles.markerWrap,
+        html: pinSvg,
+        iconSize: [28, 42],
+        iconAnchor: [14, 42],
+      }),
+      title: SITE.name,
+    })
+      .addTo(map)
+      .bindPopup(`<strong>${SITE.name}</strong><br />${SITE.address}`);
+
+    return () => {
+      map.remove();
+    };
+  }, []);
 
   const handleSubmit = (e: FormEvent) => {
     e.preventDefault();
@@ -97,16 +137,15 @@ export function Contact() {
         </div>
 
         <div className={styles.mapWrap}>
-          <iframe
-            title="Ezza Optique sur Google Maps"
-            src="https://maps.google.com/maps?q=Ezza+Optique+Agadir&output=embed&z=17"
-            width="100%"
-            height="320"
-            style={{ border: 0, borderRadius: 'var(--radius)' }}
-            allowFullScreen
-            loading="lazy"
-            referrerPolicy="no-referrer-when-downgrade"
+          <div
+            ref={mapElRef}
+            className={styles.mapRoot}
+            aria-label={`Carte — ${SITE.name}, Agadir`}
           />
+          <p className={styles.mapCaption}>
+            Zoomez ou déplacez la carte (jusqu&apos;à la vue monde). L&apos;itinéraire et la fiche Google Maps du
+            magasin s&apos;ouvrent via les liens ci-dessus ou ci-dessous.
+          </p>
           <a
             href={SITE.googleMapsUrl}
             target="_blank"
